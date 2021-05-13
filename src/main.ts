@@ -89,7 +89,7 @@ async function run(): Promise<void> {
     return (
       comment.user.login === 'github-actions[bot]' &&
       comment.body.startsWith(
-        '## :white_check_mark: Result of Pytest Coverage\n### ' + subtitle
+        '### :white_check_mark: Result of Pytest Coverage ' + subtitle
       )
     )
   })
