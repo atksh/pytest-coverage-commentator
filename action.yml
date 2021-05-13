@@ -13,6 +13,10 @@ inputs:
     description: 'GITHUB_TOKEN'
     required: true
     default: ${{ github.token }}
+  update_comment:
+    description: 'Whether update an existing comment or create a new one.'
+    required: true
+    default: 'true'
 runs:
   using: 'node12'
   main: 'dist/index.js'
