@@ -69,7 +69,7 @@ async function run(): Promise<void> {
 
   const githubToken = core.getInput('token')
   const pytestFileName = core.getInput('pytest-coverage')
-  const is_update_comment = core.getInput('update_comment').toLowerCase() === "true"
+  const is_update_comment = core.getInput('update_comment').toLowerCase() == 'true'
 
   const message = createMessage(pytestFileName)
 
