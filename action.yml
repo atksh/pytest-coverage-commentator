@@ -17,6 +17,10 @@ inputs:
     description: 'Whether update an existing comment or create a new one.'
     required: true
     default: 'true'
+  subtitle:
+    description: 'Subtitle of the comment'
+    required: true
+    default: ''
 runs:
   using: 'node12'
   main: 'dist/index.js'

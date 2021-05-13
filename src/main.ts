@@ -70,6 +70,7 @@ async function run(): Promise<void> {
   const githubToken = core.getInput('token')
   const pytestFileName = core.getInput('pytest-coverage')
   const is_update_comment = core.getInput('update_comment').toLowerCase() == 'true'
+  const subtitle = core.getInput('subtitle')
 
   const message = createMessage(pytestFileName)
 
@@ -88,7 +89,7 @@ async function run(): Promise<void> {
     return (
       comment.user.login === 'github-actions[bot]' &&
       comment.body.startsWith(
-        '### :white_check_mark: Result of Pytest Coverage\n'
+        '### :white_check_mark: Result of Pytest Coverage ' + subtitle
       )
     )
   })
