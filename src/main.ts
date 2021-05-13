@@ -14,7 +14,7 @@ function createMessage(pytestResult: any, subtitle: string): string {
 
   const lineOfText = newString.split('\n')
   let startKey = '0'
-  let newMessage = '### :white_check_mark: Result of Pytest Coverage\n ' + subtitle
+  let newMessage = '### :white_check_mark: Result of Pytest Coverage ' + subtitle
   let lastMessage = ''
   let delLine = ''
   for (const i in lineOfText) {
