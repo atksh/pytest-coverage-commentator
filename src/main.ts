@@ -8,13 +8,13 @@ const core = require('@actions/core')
 const github = require('@actions/github')
 const fs = require('fs')
 
-function createMessage(pytestResult: any): string {
+function createMessage(pytestResult: any, subtitle: string): string {
   const file = fs.readFileSync(pytestResult)
   const newString = new String(file)
 
   const lineOfText = newString.split('\n')
   let startKey = '0'
-  let newMessage = '### :white_check_mark: Result of Pytest Coverage\n'
+  let newMessage = '### :white_check_mark: Result of Pytest Coverage\n ' + subtitle
   let lastMessage = ''
   let delLine = ''
   for (const i in lineOfText) {
@@ -72,7 +72,7 @@ async function run(): Promise<void> {
   const update_comment = core.getInput('update_comment')
   const subtitle = core.getInput('subtitle')
 
-  const message = createMessage(pytestFileName)
+  const message = createMessage(pytestFileName, subtitle)
 
   const context = github.context
   const pullRequestNumber = context.payload.pull_request?.number
