@@ -69,7 +69,7 @@ async function run(): Promise<void> {
 
   const githubToken = core.getInput('token')
   const pytestFileName = core.getInput('pytest-coverage')
-  const is_update_comment = core.getInput('update_comment').toLowerCase() == 'true'
+  const update_comment = core.getInput('update_comment')
   const subtitle = core.getInput('subtitle')
 
   const message = createMessage(pytestFileName)
@@ -94,7 +94,7 @@ async function run(): Promise<void> {
     )
   })
 
-  if (comment && is_update_comment) {
+  if (comment && update_comment.toLowerCase() == 'true') {
     await octokit.issues.updateComment({
       ...context.repo,
       comment_id: comment.id,
